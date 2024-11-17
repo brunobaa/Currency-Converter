@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversora de moedas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <section class="box">
+        <header class="cabecalho">
+            <div class="nome">
+                <p>Grupo de Estudos - AGES</p>
+            </div>
+            <a href="https://portal.pucrs.br/ensino-e-pesquisa/" target="_blank">
+                <img class=pucrs src="./Images/45121ad6-5ded-4766-bf78-485c7352ae12.png" alt="Logo PUCRS">
+            </a>
+            </div>
+        </header>
+
+        <section class="escritas">
+            <h1 class="frase">Converta moedas de forma rápida e precisa com as melhores taxas em tempo real!</h1>
+            <div class="info">
+                <p id="data"></p>
+                <p id="horario"></p>
+            </div>
+        </section>
+
+        <section class="conversor">
+
+            <div class="conversionContainer">
+                <div class="topConversion">
+
+                    <div class="inputLabel">
+                        <h2>Você tem: </h2>
+                        <input id="quantidade" class="input" oninput="restrict(this), convInsta()" type="number"
+                            value="">
+                    </div>
+
+                    <div class="opcoes">
+                        <div class="resposta">
+                            <img class="flag" id="flaginp" src="https://flagsapi.com/BR/flat/64.png">
+                            <select onclick="changeF('flaginp'), convInsta()" class="select" id="moeda-base"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="taxas" id="timer">Taxas de conversão são atualizadas todos os dias às 16:00 CET</div>
+            </div>
+
+            <img class="botao" onclick="troca()" src="./Images/botao.svg">
+
+            <div class="conversionContainer">
+                <div class="topConversion">
+
+                    <div class="inputLabel">
+                        <h2>Você recebe: </h2>
+                        <input id="conversao" class="input" type="number" value="0.00" disabled>
+                    </div>
+
+                    <div class="opcoes">
+                        <div class="resposta">
+                            <img class=flag id="flagresp" src="https://flagsapi.com/US/flat/64.png">
+                            <select onclick="changeF('flagresp'), convInsta()" class="select" id="moeda-conv"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="taxas" id="rates">1 BRL = 0.18 USD</div>
+            </div>
+        </section>
+
+        <div class="bottomContainer">
+            <div class="botoesGrafico">
+                <button id="fazGraph" class=botaoGraph onclick="montaGraf()">Montar Grafico</button>
+                <select id="selectGraph" class="botaoGraph">
+                    <option value="360" selected>360 dias</option>
+                    <option value="90">90 dias</option>
+                    <option value="30">30 dias</option>
+                    <option value="15">15 dias</option>
+                    <option value="7">7 dias</option>
+                </select>
+            </div>
+
+            <div id="grafico" class="graph"></div>
+
+        </div>
+    </section>
+
+    <script src="arrayMoedas.js"></script>
+    <script src="scriptNovaApi.js"></script>
+
+</body>
+
+</html>
